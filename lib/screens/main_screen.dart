@@ -1,3 +1,4 @@
+import 'package:almualiflutter/screens/junkYard.dart';
 import 'package:almualiflutter/screens/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,12 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>JunkYard())
+                  );
+                },
                 child: Icon(
                     Icons.person
                 ),
