@@ -1,8 +1,12 @@
-import 'package:almualiflutter/screens/junkYard.dart';
+import 'profile.dart';
 import 'package:almualiflutter/screens/profile.dart';
+import 'package:almualiflutter/screens/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'settings.dart';
+import 'junkyard.dart';
+
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({ this.title}) ;
 
@@ -16,7 +20,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   int selectedIndex=0;
-
+Color lightGreen = Colors.lightGreen;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>JunkYard())
+                      MaterialPageRoute(builder: (context) =>Profile())
                   );
                 },
                 child: Icon(
@@ -53,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.w900,
+                color: lightGreen,
               ),
             ),
             Container(
@@ -69,6 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Image.network('https://cdn.pixabay.com/photo/2015/01/28/23/35/landscape-615429_960_720.jpg',
                           fit:BoxFit.cover,),
                         ),
+                      Container(
+                        height: 200,
+                        width:400,
+                        color: Colors.black87.withOpacity(0.6),
+                      ),
+                      Center(
+                        child: Text('1'),
+                      )
                       ],
                   ),),
             ),
@@ -81,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.w900,
+                  color: lightGreen,
                 ),
               ),
 //              listview must be set in container to work proberly
@@ -109,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.w900,
+                  color: lightGreen,
                 ),
               ),
 //              listview must be set in container to work proberly
@@ -143,14 +158,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed:(){
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>ProfilePage())
+                      MaterialPageRoute(builder: (context) =>MyHomePage())
                   );
                 }),
             IconButton(icon: Icon(Icons.settings),
                 onPressed:(){
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>SettingPage())
+                      MaterialPageRoute(builder: (context) =>SettingsPage())
                   );
                 }),
           ],
@@ -182,6 +197,8 @@ class CourseCard extends StatelessWidget {
          children: <Widget>[
            Container(
                height:200, width:200 ,child: Image.asset(image , fit: BoxFit.cover,)),
+           Container(height: 200,width:200,
+           color:Colors.black87.withOpacity(0.6),),
            Center(child: Text(name,)),
          ],
         ),

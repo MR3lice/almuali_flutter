@@ -1,85 +1,73 @@
+// this free page for testing samples
 import 'package:flutter/material.dart';
-import 'package:almualiflutter/screens/profile.dart';
+import 'package:almualiflutter/screens/settings.dart';
 import 'package:flutter/cupertino.dart';
-class ProfilePage extends StatefulWidget {
+
+class Profile extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
-  final TextStyle blackText = TextStyle(
-    color: Colors.white,
-  );
-
-  final TextStyle blackBoldText = TextStyle(
-    color: Colors.white,
-  );
-
-  final TextStyle greyTExt = TextStyle(color: Colors.grey.shade400);
-
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Column(
-//      mainAxisAlignment: MainAxisAlignment.center,
-//      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('الملف الشخصي'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: new Column(
+//            mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
+            Container(
+                width: 80.0,
+                height: 80.0,
+                decoration: new BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "اسم المستحم",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                  ),
-                  Text(
-                    "متعلم",
-                    style: TextStyle(
-                      color: Colors.grey.shade400,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 20.0),
-            ListTile(
-              title: Text(
-                "الخط",
-                style: blackBoldText,
-              ),
-              subtitle: Text(
-                "الكوفي",
-                style: greyTExt,
-              ),
-              trailing: Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.grey.shade400,
-              ),
-              onTap: () {},
-            ),
+                    image: new DecorationImage(
+                        fit: BoxFit.fill,
+                        image: new NetworkImage(
+                            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.8S4L0ieIehMsjfO52FNZpgHaHa%26pid%3DApi&f=1")))),
+            const SizedBox(height: 10),
+            Text("ابو خليل", textScaleFactor: 1.5),
+            const SizedBox(height: 18),
+            profileLable("المعلومات الشخصية"),
+            const SizedBox(height: 18),
+            profileLable("تفاصيل الخدمة"),
+            const SizedBox(height: 18),
+            profileLable("خصوصية الحساب"),
+            const SizedBox(height: 18),
           ],
         ),
       ),
+    );
+  }
+}
+
+class profileLable extends StatelessWidget {
+  String name;
+
+  profileLable(this.name);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment:CrossAxisAlignment.end,
+      children: <Widget>[
+        Icon(
+          Icons.keyboard_arrow_left,
+          color: Colors.grey.shade400,
+        ),
+        Text(name,
+          textAlign: TextAlign.end,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ],
     );
   }
 }

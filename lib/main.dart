@@ -1,4 +1,4 @@
-import 'package:almualiflutter/screens/settings.dart';
+
 import 'package:flutter/material.dart';
 import 'screens/main_screen.dart';
 

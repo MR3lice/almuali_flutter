@@ -1,102 +1,85 @@
-import 'package:almualiflutter/screens/profile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'main_screen.dart';
+import 'package:flutter/cupertino.dart';
 
- class SettingPage extends StatefulWidget {
-  static final String path ="";
-
+class SettingsPage extends StatefulWidget {
   @override
-  _SettingPageState createState() => _SettingPageState();
+  _SettingsPageState createState() => _SettingsPageState();
 }
 
-class _SettingPageState extends State<SettingPage> {
-  final TextStyle blackText=TextStyle(
-    color:Colors.black,
+class _SettingsPageState extends State<SettingsPage> {
+  final TextStyle blackText = TextStyle(
+    color: Colors.white,
   );
 
-  final  TextStyle  blackBoldText=TextStyle(
-    color: Colors.black,
+  final TextStyle blackBoldText = TextStyle(
+    color: Colors.white,
   );
 
-  final TextStyle greyTExt=TextStyle(
-    color:Colors.grey.shade400
-  );
+  final TextStyle greyTExt = TextStyle(color: Colors.grey.shade400);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-    padding: const EdgeInsets.all(32.0),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
         child: Column(
+//      mainAxisAlignment: MainAxisAlignment.center,
+//      crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SizedBox(height: 30.0,),
             Row(
               children: <Widget>[
-
-                const SizedBox(width: 10.0),
-
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 20.0),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "اسم المستحم",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                  ),
+                  Text(
+                    "متعلم",
+                    style: TextStyle(
+                      color: Colors.grey.shade400,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(height: 20.0),
             ListTile(
-              title: Text("الخط",style: blackBoldText,),
-              subtitle: Text("الكوفي",style: greyTExt,),
-              trailing: Icon(Icons.keyboard_arrow_right,color: Colors.grey.shade400,),
-              onTap: (){},
-            ),
-            ListTile(
-              title: Text("اعدادت الصوت",style: blackBoldText,),
-              subtitle: Text("صوت محيطي",style: greyTExt,),
-              trailing: Icon(Icons.keyboard_arrow_right,color: Colors.grey.shade400,),
-              onTap: (){},
-            ),
-            SwitchListTile(
-              title: Text("النمط الليلي",style: blackBoldText,),
-              subtitle: Text("تشغيل",style: greyTExt,),
-              value: true,
-              onChanged: (val){},
-            ),
-            SwitchListTile(
-              title: Text("الاشعارات",style: blackBoldText,),
-              subtitle: Text("تشغيل",style: greyTExt,),
-              value: false,
-              onChanged: (val){},
-            ),
-            ListTile(
-              title: Text("الخروج من الحساب",style: blackBoldText,),
-              onTap: (){},
+              title: Text(
+                "الخط",
+                style: blackBoldText,
+              ),
+              subtitle: Text(
+                "الكوفي",
+                style: greyTExt,
+              ),
+              trailing: Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.grey.shade400,
+              ),
+              onTap: () {},
             ),
           ],
         ),
-    ),
-        bottomNavigationBar:BottomAppBar(
-          child:Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              IconButton(icon: Icon(Icons.home),
-                  onPressed:(){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
-                  }),
-              IconButton(icon: Icon(Icons.search),
-                  onPressed: null),
-              IconButton(icon: Icon(Icons.settings),
-                  onPressed:(){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) =>SettingPage())
-                    );
-                  }),
-            ],
-          ),
-        )
+      ),
     );
   }
 }
-
-
-
-
-//image: DecorationImage(
-//image: CachedNetworkImageProvider(avatars[1]),
-//fit: BoxFit.cover,
